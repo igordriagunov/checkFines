@@ -23,9 +23,10 @@ public class FinesController {
         return "index";
     }
 
-    @GetMapping("/{carNum}")
-    public String get(@PathVariable String carNum, Model model) {
+    @GetMapping(params = "carNum")
+    public String find(@PathVariable String carNum, Model model) {
         model.addAttribute("fines", fineService.findByCarNumber(carNum));
+        model.addAttribute("carNum", carNum);
         return "fines";
     }
 

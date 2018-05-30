@@ -1,16 +1,25 @@
 <!doctype html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head data-th-text="">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>welcome</title>
+    <title>Список штрафов :</title>
 </head>
 <body>
-<h1>welcome</h1>
+<form data-th-action="@{/fines}">
+    <ul>
 
-    <p>fines will here</p>
+        <li th: data-th-each="fine : ${fines}">
+            <a data-th-href="@{/{carNum}(carNum=${fine.carNum})}">
+                <span th:text="${fine.carNum}"></span>
+                <span th:text="${fine.info}"></span>
+                <span th:text="${fine.price}"></span>
+            </a>
+        </li>
+    </ul>
 
+</form>
 </body>
 </html>

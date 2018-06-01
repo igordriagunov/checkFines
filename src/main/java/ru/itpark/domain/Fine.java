@@ -15,6 +15,7 @@ public class Fine {
     @Id
     private int id;
     private String carNum;
+    private String regNum;
     private String dateOfFine;
     private String info;
     private int price;

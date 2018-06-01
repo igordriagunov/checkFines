@@ -31,10 +31,11 @@ public class FinesController {
         return "index";
     }
 
-    @GetMapping(params = "carNum")
-    public String find(@RequestParam String carNum, Model model) {
-        model.addAttribute("fines", fineService.findByCarNumber(carNum));
+    @GetMapping(params = {"carNum}{regNum"})
+    public String find(@RequestParam String carNum,String regNum, Model model) {
+        model.addAttribute("fines", fineService.findByCarNumber(carNum,regNum));
         model.addAttribute("carNum", carNum);
+        model.addAttribute("regNum", regNum);
         return "fines";
     }
 

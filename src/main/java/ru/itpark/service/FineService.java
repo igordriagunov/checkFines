@@ -18,8 +18,8 @@ public class FineService {
         return fineRepository.findAllFines();
     }
 
-    public List<Fine> findByCarNumber(String carNum) {
-        return fineRepository.findByCarNumber(carNum);
+    public List<Fine> findByCarNumber(String carNum, String regNum) {
+        return fineRepository.findByCarNumber(carNum, regNum) ;
     }
 
 }

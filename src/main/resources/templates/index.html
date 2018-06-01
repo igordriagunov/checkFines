@@ -10,10 +10,10 @@
 <body>
 <h1> Поиск штрафов </h1>
 <form data-th-action="@{/}">
-    <label for="carNum">Введите номер автомобиля <br></label>
-    <input id="carNum" name="carNum" type="search" >
-    <!--data-th-value="${carNum}"-->
+    <label for="carNum">Введите номер автомобиля </label><br>
+    <input id="carNum" name="carNum" type="search" data-th-value="${carNum}">
     <button>Проверить</button>
 </form>
+
 </body>
 </html>

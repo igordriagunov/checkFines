@@ -22,18 +22,13 @@ public class FineRepository {
     public List<Fine> findAllFines() {
         return jdbcTemplate.query(
                 "SELECT id, carNum, dateOfFine, info, price FROM fines",
-                new RowMapper<Fine>() {
-                    @Override
-                    public Fine mapRow(ResultSet resultSet, int i) throws SQLException {
-                        return new Fine(
-                                resultSet.getInt("id"),
-                                resultSet.getString("carNum"),
-                                resultSet.getString("dateOfFine"),
-                                resultSet.getString("info"),
-                                resultSet.getInt("price")
-                        );
-                    }
-                }
+                (resultSet, i) -> new Fine(
+                        resultSet.getInt("id"),
+                        resultSet.getString("carNum"),
+                        resultSet.getString("dateOfFine"),
+                        resultSet.getString("info"),
+                        resultSet.getInt("price")
+                )
         );
     }
 

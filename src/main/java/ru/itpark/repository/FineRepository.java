@@ -21,7 +21,7 @@ public class FineRepository {
 
     public List<Fine> findAllFines() {
         return jdbcTemplate.query(
-                "SELECT id, carNum, dateOfFine, info, price FROM fines",
+                "SELECT id, carNum, regNum, dateOfFine, info, price FROM fines",
                 (resultSet, i) -> new Fine(
                         resultSet.getInt("id"),
                         resultSet.getString("carNum"),
@@ -35,7 +35,8 @@ public class FineRepository {
 
     public List<Fine> findByCarNumber(String carNum, String regNum) {
         return jdbcTemplate.query(
-                "SELECT id, carNum, dateOfFine, info, price FROM fines WHERE carNum = :carNum AND regNum = :regNum",
+                "SELECT id, carNum, regNum, dateOfFine, info, price FROM fines WHERE " +
+                        "carNum = :carNum AND regNum = :regNum ",
                 Map.of(
                         "carNum", carNum.toLowerCase(),
                         "regNum", regNum.toLowerCase()),

@@ -22,7 +22,7 @@ public class FinesController {
     @GetMapping("all-fines")
     public String findAll(Model model) {
         model.addAttribute("fines",fineService.findAllFines());
-        return "fines";
+        return "f";
     }
 
     @GetMapping
@@ -31,7 +31,7 @@ public class FinesController {
         return "index";
     }
 
-    @GetMapping(params = {"carNum}{regNum"})
+    @GetMapping(params = {"carNum","regNum"})
     public String find(@RequestParam String carNum,String regNum, Model model) {
         model.addAttribute("fines", fineService.findByCarNumber(carNum,regNum));
         model.addAttribute("carNum", carNum);

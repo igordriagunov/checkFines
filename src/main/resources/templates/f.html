@@ -5,10 +5,29 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>welcome</title>
+    <title>Список штрафов :</title>
 </head>
 <body>
-<h1>welcome</h1>
-<p data-th-text="${fine}"
+<form data-th-action="@{/all-fines}">
+    <!--<label for="carNum-field">Введите номер автомобиля </label><br>-->
+    <!--<input id="carNum-field" name="carNum" type="search" data-th-value="${carNum}">-->
+    <!--<br>-->
+    <!--<label for="regNum-field">Введите регистрационный номер </label><br><br>-->
+    <!--<input id="regNum-field" name="regNum" type="search" data-th-value="${regNum}">-->
+
+    <!--<button>Проверить</button>-->
+</form>
+<ul>
+    <li th:each="fine : ${fines}">
+        <a th:href="@{/{carNum}(carNum=${fine.carNum})}">
+            <span th:text="${fine.carNum}"></span><br>
+            <span th:text="${fine.regNum}"></span><br>
+            <span th:text="${fine.dateOfFine}"></span><br>
+            <span th:text="${fine.info}"></span><br>
+            <span th:text="${fine.price}"></span>
+        </a>
+    </li>
+</ul>
+
 </body>
 </html>

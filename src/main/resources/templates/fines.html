@@ -16,35 +16,36 @@
 </head>
 <body>
 <form th:action="@{/}">
-    <div class="container">
+    <div th:class="container">
         <div class="row">
-            <div class="col s12">
-                <label for="carNum-field">Введите номер автомобиля </label><br>
-                <input id="carNum-field" name="carNum" type="search" th:value="${carNum}">
+            <div class="col 12">
+                <label th:for="carNum-field">Введите номер автомобиля </label><br>
+                <input th:id="carNum-field" name="carNum" type="search" th:value="${carNum}">
                 <br>
-                <label for="regNum-field">Введите регистрационный номер </label><br><br>
-                <input id="regNum-field" name="regNum" type="search" th:value="${regNum}">
-                <button>Проверить</button>
-
-
+                <label th:for="regNum-field">Введите регистрационный номер </label><br><br>
+                <input th:id="regNum-field" name="regNum" th:type="search" th:value="${regNum}">
+                <!--<label for="region-field"></label>-->
+                <!--<select id="region-field" th:name="region">-->
+                <!--<option th:value="16">16</option>-->
+                <!--<option th:value="116">116</option>-->
+                <!--<option th:value="716">716</option>-->
+                <!--</select>-->
+                <button class="waves-effect waves-light btn">Проверить</button>
                 <ol>
                     <li th:each="fine : ${fines}">
                         <a th:href="@{/{carNum}(carNum=${fine.carNum})}"></a>
                         <a th:href="@{/{regNum}(regNum=${fine.regNum})}"></a>
-
-
                         <span th:text="${fine.dateOfFine}"></span>
                         <span th:text="${fine.info}"></span>
                         <span th:text="${fine.price}"></span>
-
                     </li>
                 </ol>
             </div>
         </div>
     </div>
-
 </form>
 <!--JavaScript at end of body for optimized loading-->
+<script type="text/javascript" th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
 <script type="text/javascript" th:src="@{js/materialize.min.js}"></script>
 </body>
 </html>

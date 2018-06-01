@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>проверка штрафов</title>
+    <title> проверка штрафов</title>
 
     <link th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}"
           rel="stylesheet">
@@ -16,7 +16,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col s12">
+        <div class="col s10">
             <h1> Поиск штрафов </h1>
             <form data-th-action="@{/}">
                 <label for="carNum-field">Введите номер автомобиля </label><br>
@@ -24,8 +24,9 @@
                 <br>
                 <label for="regNum-field">Введите регистрационный номер </label><br>
                 <input id="regNum-field" name="regNum" type="search" th:value="${regNum}">
-                <button>Проверить</button>
+                <button class="waves-effect waves-light btn">Проверить</button>
             </form>
+            <script type="text/javascript" th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
             <script type="text/javascript" th:src="@{js/materialize.min.js}"></script>
         </div>
     </div>

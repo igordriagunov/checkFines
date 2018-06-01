@@ -14,16 +14,22 @@
 
 </head>
 <body>
-<h1> Поиск штрафов </h1>
-<form data-th-action="@{/}">
-    <label for="carNum-field">Введите номер автомобиля </label><br>
-    <input id="carNum-field" name="carNum" type="search" th:value="${carNum}">
-    <br>
-    <label for="regNum-field">Введите регистрационный номер </label><br>
-    <input id="regNum-field" name="regNum" type="search" th:value="${regNum}">
-    <button>Проверить</button>
-</form>
-<script type="text/javascript" th:src="@{js/materialize.min.js}"></script>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1> Поиск штрафов </h1>
+            <form data-th-action="@{/}">
+                <label for="carNum-field">Введите номер автомобиля </label><br>
+                <input id="carNum-field" name="carNum" type="search" th:value="${carNum}">
+                <br>
+                <label for="regNum-field">Введите регистрационный номер </label><br>
+                <input id="regNum-field" name="regNum" type="search" th:value="${regNum}">
+                <button>Проверить</button>
+            </form>
+            <script type="text/javascript" th:src="@{js/materialize.min.js}"></script>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

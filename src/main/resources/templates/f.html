@@ -19,13 +19,14 @@
 </form>
 <ul>
     <li th:each="fine : ${fines}">
-        <a th:href="@{/{carNum}(carNum=${fine.carNum})}">
-            <span th:text="${fine.carNum}"></span><br>
-            <span th:text="${fine.regNum}"></span><br>
-            <span th:text="${fine.dateOfFine}"></span><br>
-            <span th:text="${fine.info}"></span><br>
+        <a th:href="@{/{carNum}(carNum=${fine.carNum})}"></a>
+
+            <span th:text="${fine.carNum}"></span>
+            <span th:text="${fine.regNum}"></span>
+            <span th:text="${fine.dateOfFine}"></span>
+            <span th:text="${fine.info}"></span>
             <span th:text="${fine.price}"></span>
-        </a>
+
     </li>
 </ul>
 

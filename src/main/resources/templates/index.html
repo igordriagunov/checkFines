@@ -26,6 +26,16 @@
                 <input id="regNum-field" name="regNum" type="search" th:value="${regNum}">
                 <button class="waves-effect waves-light btn">Проверить</button>
             </form>
+
+            <ol>
+                <li th:each="fine : ${fines}">
+                    <a th:href="@{/{carNum}(carNum=${fine.carNum})}"></a>
+                    <a th:href="@{/{regNum}(regNum=${fine.regNum})}"></a>
+                    <span th:text="${fine.dateOfFine}"></span>
+                    <span th:text="${fine.info}"></span>
+                    <span th:text="${fine.price}"></span>
+                </li>
+            </ol>
             <script type="text/javascript" th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
             <script type="text/javascript" th:src="@{js/materialize.min.js}"></script>
         </div>

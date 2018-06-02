@@ -27,7 +27,6 @@ public class FinesController {
 
     @GetMapping
     public String indexPage(Model model) {
-        model.addAttribute("fines", "");
         return "index";
     }
 
@@ -36,7 +35,7 @@ public class FinesController {
         model.addAttribute("fines", fineService.findByCarNumber(carNum,regNum));
         model.addAttribute("carNum", carNum);
         model.addAttribute("regNum", regNum);
-        return "fines";
+        return "index";
     }
 
 }

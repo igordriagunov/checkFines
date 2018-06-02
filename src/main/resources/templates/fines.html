@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Список штрафов :</title>
 
-    <link th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}"
+    <link href="@{https://fonts.googleapis.com/icon?family=Material+Icons}"
           rel="stylesheet">
     <link rel="stylesheet"
           th:href="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css}">
@@ -18,12 +18,12 @@
 <form th:action="@{/}">
     <div th:class="container">
         <div class="row">
-            <div class="col 12">
+            <div class="col s10">
                 <label th:for="carNum-field">Введите номер автомобиля </label><br>
-                <input th:id="carNum-field" name="carNum" type="search" th:value="${carNum}">
+                <input id="carNum-field" name="carNum" type="search" th:value="${carNum}">
                 <br>
                 <label th:for="regNum-field">Введите регистрационный номер </label><br><br>
-                <input th:id="regNum-field" name="regNum" th:type="search" th:value="${regNum}">
+                <input id="regNum-field" name="regNum" th:type="search" th:value="${regNum}">
                 <!--<label for="region-field"></label>-->
                 <!--<select id="region-field" th:name="region">-->
                 <!--<option th:value="16">16</option>-->

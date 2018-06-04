@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head data-th-replace="fragments/layout :: headFragment(title='Error')"></head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1>Oops! Something bad happened</h1>
+            <img class="responsive-img"
+                 data-th-src="@{/static/city.jpg}"/>
+        </div>
+    </div>
+    <div data-th-include="fragments/layout :: scriptsFragment" data-th-remove="tag"></div>
+</div>
+</body>
+</html>
+<!--<form data-th-action="@{/logout}" method="post" data-th-if="${@accountService.isAuthenticated()}">-->
+<!--<button type="submit" class="waves-effect waves-light btn">Logout</button>-->
+<!--</form>-->

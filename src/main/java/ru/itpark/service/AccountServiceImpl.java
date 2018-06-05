@@ -1,5 +1,6 @@
 package ru.itpark.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,6 +12,8 @@ import ru.itpark.repository.AccountRepository;
 @Primary
 @Service("accountService")
 public class AccountServiceImpl implements AccountService {
+
+
     private final AccountRepository accountRepository;
 
     public AccountServiceImpl(AccountRepository accountRepository) {

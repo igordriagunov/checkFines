@@ -12,30 +12,27 @@
                 <br>
                 <label for="regNum-field">Введите регистрационный номер </label><br>
                 <input id="regNum-field" name="regNum" type="search" th:value="${regNum}">
-                <button class="waves-effect waves-light btn">Проверить</button>
-
-
-            <ol>
-                <li th:each="fine : ${fines}">
-                    <a th:href="@{/{carNum}(carNum=${fine.carNum})}"></a>
-                    <a th:href="@{/{regNum}(regNum=${fine.regNum})}"></a>
-                    <span th:text="${fine.dateOfFine}"></span>
-                    <span th:text="${fine.info}"></span>
-                    <span th:text="${fine.price}"></span>
-                </li>
-            </ol>
-
-            <a data-th-if="${@accountService.hasRole('ADMIN')}"
-               data-th-href="@{/login}" class="waves-effect waves-light btn">Login</a>
+                <button class="waves-effect blue accent-2 btn">Проверить</button>
+                <ol>
+                    <li th:each="fine : ${fines}">
+                        <a th:href="@{/{carNum}(carNum=${fine.carNum})}"></a>
+                        <a th:href="@{/{regNum}(regNum=${fine.regNum})}"></a>
+                        <span th:text="${fine.dateOfFine}"></span>
+                        <span th:text="${fine.info}"></span>
+                        <span th:text="${fine.price}"></span>
+                    </li>
+                </ol>
+                <!--<a data-th-if="${@accountService.hasRole('ADMIN')}"-->
+                   <!--data-th-href="@{/index.html}" class="waves-effect waves-light btn"></a>-->
             </form>
         </div>
     </div>
 </div>
 <div data-th-fragment="logoutFragment" data-th-remove="tag">
     <form data-th-action="@{/logout}" method="post" data-th-if="${@accountService.isAuthenticated()}">
-        <button type="submit" class="waves-effect waves-light btn">Logout</button>
+        <button type="submit" class="waves-effect blue accent-1 btn">Logout</button>
     </form>
 </div>
-<div data-th-include="fragments/layout :: scriptFragment" data-th-remove="tag"></div>
+<!--<div data-th-include="fragments/layout :: scriptFragment" data-th-remove="tag"></div>-->
 </body>
 </html>

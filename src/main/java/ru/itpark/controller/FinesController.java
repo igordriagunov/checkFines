@@ -33,7 +33,7 @@ public class FinesController {
     @PreAuthorize("hasRole('ADMIN')")
     public String indexPage(Model model , @AuthenticationPrincipal Account account) {
         model.addAttribute("account", account);
-        return "/index";
+        return "pages/index";
     }
 
     @GetMapping(params = {"carNum","regNum"})
@@ -41,7 +41,7 @@ public class FinesController {
         model.addAttribute("fines", fineService.findByCarNumber(carNum,regNum));
         model.addAttribute("carNum", carNum);
         model.addAttribute("regNum", regNum);
-        return "/index";
+        return "pages/index";
     }
 
 }

@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
-<head data-th-replace="fragments/layout :: headFragment(title='Login')"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: headFragment(title='Login')"></head>
 <body>
 <div class="container">
     <div class="row">
         <div class="col s12">
             <h1>Login</h1>
-            <form name="login" data-th-action="@{index/login}" method="post">
+            <form name="f" data-th-action="@{/login}" method="post">
                 <div class="row">
                     <div class="input-field col s12">
                         <input placeholder="Login" id="login" name="username" type="text" class="validate" required>
@@ -24,7 +24,12 @@
             </form>
         </div>
     </div>
+    <div data-th-fragment="logoutFragment" data-th-remove="tag">
+        <form data-th-action="@{/logout}" method="post" data-th-if="${@accountService.isAuthenticated()}">
+            <button type="submit" class="waves-effect waves-light btn">Logout</button>
+        </form>
+    </div>
+    <div data-th-include="fragments/layout :: scriptsFragment" data-th-remove="tag"></div>
 </div>
-<div data-th-include="fragments/layout :: scriptsFragment" data-th-remove="tag"></div>
 </body>
 </html>

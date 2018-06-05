@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head data-th-replace="fragments/layout :: headFragment(title='Поиск штрафов')"></head>
+<head th:replace="fragments/layout :: headFragment(title='Поиск штрафов')"></head>
 <body>
 <div class="container">
     <div class="row">
@@ -13,7 +13,7 @@
                 <label for="regNum-field">Введите регистрационный номер </label><br>
                 <input id="regNum-field" name="regNum" type="search" th:value="${regNum}">
                 <button class="waves-effect waves-light btn">Проверить</button>
-            </form>
+
 
             <ol>
                 <li th:each="fine : ${fines}">
@@ -24,12 +24,18 @@
                     <span th:text="${fine.price}"></span>
                 </li>
             </ol>
+
             <a data-th-if="${@accountService.hasRole('ADMIN')}"
-               data-th-href="@{/index/login}" class="waves-effect waves-light btn">Login</a>
+               data-th-href="@{/login}" class="waves-effect waves-light btn">Login</a>
+            </form>
         </div>
     </div>
 </div>
-<div data-th-include="fragments/layout :: scriptFragments" data-th-remove="tag"></div>
-
+<div data-th-fragment="logoutFragment" data-th-remove="tag">
+    <form data-th-action="@{/logout}" method="post" data-th-if="${@accountService.isAuthenticated()}">
+        <button type="submit" class="waves-effect waves-light btn">Logout</button>
+    </form>
+</div>
+<div data-th-include="fragments/layout :: scriptFragment" data-th-remove="tag"></div>
 </body>
 </html>

@@ -24,6 +24,7 @@ public class AutoFinesWebApplication {
                         new Account(
                                 0,
                                 "admin",
+                                "e@mail.ru",
                                 encoder.encode("admin"),
                                 List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
                                 true,
@@ -34,6 +35,7 @@ public class AutoFinesWebApplication {
                         new Account(
                                 0,
                                 "user",
+                                "e@mail.ru",
                                 encoder.encode("user"),
                                 List.of(new SimpleGrantedAuthority("ROLE_USER")),
                                 true,

@@ -18,6 +18,7 @@ public class Account implements UserDetails{
     @GeneratedValue
     private int id;
     private String username;
+    private String eMail;
     private String password;
     @ElementCollection(fetch = FetchType.EAGER)
     private Collection<GrantedAuthority> authorities;

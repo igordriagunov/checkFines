@@ -33,9 +33,7 @@ public class AccountServiceImpl implements AccountService {
                 .getAuthorities()
                 .stream()
                 .anyMatch(
-                        e -> ((GrantedAuthority) e)
-                                .getAuthority()
-                                .equals("ROLE" + role)
+                        e -> e.getAuthority().equals("ROLE" + role)
                 );
     }
 

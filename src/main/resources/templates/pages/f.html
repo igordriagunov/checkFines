@@ -3,7 +3,7 @@
 <head data-th-replace="fragments/layout :: headFragment(title='Полный список')"></head>
 <body>
 <form data-th-action="@{/all-fines}">
-    <ol>
+    <ul>
         <li th:each="fine : ${fines}">
             <a th:href="@{/{carNum}(carNum=${fine.carNum})}"></a>
             <span th:text="${fine.carNum}"></span>
@@ -12,8 +12,8 @@
             <span th:text="${fine.info}"></span>
             <span th:text="${fine.price}"></span>
         </li>
-    </ol>
-    <a data-th-if="${@accountService.hasRole('ADMIN')}"></a>
+    </ul>
+    <!--<a data-th-if="${@accountService.hasRole('ADMIN')}"></a>-->
 </form>
 <div data-th-include="fragments/layout :: scriptFragments" data-th-remove="tag"></div>
 </body>

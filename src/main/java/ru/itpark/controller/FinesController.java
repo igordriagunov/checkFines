@@ -23,7 +23,7 @@ public class FinesController {
 
 
     @GetMapping("all-fines")
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     public String findAll(Model model, @AuthenticationPrincipal Account account) {
         model.addAttribute("account", account);
         model.addAttribute("fines", fineService.findAllFines());
@@ -37,15 +37,23 @@ public class FinesController {
 //    }
 
     @GetMapping("registration")
-    @PreAuthorize("hasRole('ADMIN')")
-    public String registration(Model model, @AuthenticationPrincipal Account account) {
+//    @PreAuthorize("hasRole('ADMIN')")
+    public String getRegistration(Model model, @AuthenticationPrincipal Account account) {
         model.addAttribute("account", account);
         return "pages/registration";
     }
 
 
+    @PostMapping("registration")
+//    @PreAuthorize("hasRole('ADMIN')")
+    public String completeRegistration(Model model, @AuthenticationPrincipal Account account) {
+        model.addAttribute("account", account);
+        return "login";
+    }
+
+
     @PostMapping(params = {"username", "eMail", "password"})
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     public String reg(
             @RequestParam("username") String username,
             @RequestParam("eMail") String eMail,
@@ -63,7 +71,7 @@ public class FinesController {
 
 
     @GetMapping
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     public String indexPage(Model model, @AuthenticationPrincipal Account account) {
         model.addAttribute("account", account);
         return "pages/index";

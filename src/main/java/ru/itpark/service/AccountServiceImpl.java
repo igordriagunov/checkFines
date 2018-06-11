@@ -40,7 +40,7 @@ public class AccountServiceImpl implements AccountService {
                 .getAuthorities()
                 .stream()
                 .anyMatch(
-                        e -> e.getAuthority().equals("ROLE" + role)
+                        e -> e.getAuthority().equals("ROLE_" + role)
                 );
     }
 

@@ -10,8 +10,7 @@
                 <label for="carNum-field">Введите номер автомобиля<br></label><br>
                 <input id="carNum-field" placeholder="о777оо77" name="carNum" type="search" th:value="${carNum}">
                 <br>
-                <label for="regNum-field">Введите регистрационный номер<br>
-                </label><br>
+                <label for="regNum-field">Введите регистрационный номер<br></label><br>
                 <input id="regNum-field" placeholder="1616111222" name="regNum" type="search" th:value="${regNum}">
                 <button class="waves-effect blue accent-2 btn">Проверить
                     <i class="material-icons right">send</i>
@@ -25,7 +24,7 @@
                         <span th:text="${fine.price}"></span>
                     </li>
                 </ol>
-                <!--<a data-th-if="${@accountService.hasRole('ADMIN')}"-->
+                <a th:href="@{/login}">Авторизация</a>
                <!--th:href="@{/logout.html}" class="waves-effect waves-light btn"></a>-->
 
 

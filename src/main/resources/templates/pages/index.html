@@ -3,17 +3,17 @@
 <head th:replace="fragments/layout :: headFragment(title='Поиск штрафов')"></head>
 <body>
 <div class="container">
+    <a th:href="@{/login}" th:if="${!@accountService.isAuthenticated()}" class="waves-effect green lighten-3 btn">Login</a>
+    <a th:href="@{/registration}" th:if="${!@accountService.isAuthenticated()}" class="waves-effect teal lighten-3 btn">Регистрация</a>
+
+    <form th:if="${@accountService.isAuthenticated()}"  data-th-action="@{/logout}" method="post" data-th-if="${@accountService.isAuthenticated()}">
+        <br> <button type="submit" class="waves-effect blue accent-1 btn">Logout</button>
+    </form>
     <div class="row">
         <div class="col s10">
             <h1> Поиск штрафов </h1>
-                <a th:href="@{/login}" th:if="${!@accountService.isAuthenticated()}" class="waves-effect green lighten-3 btn">Login</a>
-                <a th:href="@{/registration}" th:if="${!@accountService.isAuthenticated()}" class="waves-effect teal lighten-3 btn">Регистрация</a>
-
-            <form  th:if="${@accountService.isAuthenticated()}"  data-th-action="@{/logout}" method="post" data-th-if="${@accountService.isAuthenticated()}">
-                <br> <button type="submit" class="waves-effect blue accent-1 btn">Logout</button>
-            </form>
             <form data-th-action="@{/}">
-
+                <br>
                 <label for="carNum-field">Введите номер автомобиля<br></label><br>
                 <input id="carNum-field" placeholder="о777оо77" name="carNum" type="search" th:value="${carNum}">
                 <br>
@@ -31,18 +31,10 @@
                         <span th:text="${fine.price}"></span>
                     </li>
                 </ol>
-                <!--<a th:href="@{/logout.html}" class="waves-effect waves-light btn"></a>-->
-
             </form>
         </div>
     </div>
 </div>
 
-<!--<div data-th-fragment="logoutFragment" data-th-remove="tag">-->
-<!--<form data-th-action="@{/logout}" method="post" data-th-if="${@accountService.isAuthenticated()}">-->
-<!--<button type="submit" class="waves-effect blue accent-1 btn">Logout</button>-->
-<!--</form>-->
-<!--</div>-->
-<!--<div data-th-include="fragments/layout :: scriptFragment" data-th-remove="tag"></div>-->
 </body>
 </html>

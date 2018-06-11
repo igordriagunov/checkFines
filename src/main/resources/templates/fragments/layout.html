@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="headFragment(title)">
+
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -15,16 +16,29 @@
 <body>
 
 <div data-th-fragment="logoutFragment" data-th-remove="tag">
-    <form data-th-action="@{/logout}" method="post" data-th-if="${@accountService.isAuthenticated()}">
-        <button type="submit" class="waves-effect blue accent-1 btn">Logout</button>
+
+    <a th:href="@{/login}" th:if="${!@accountService.isAuthenticated()}" class="waves-effect green lighten-3 btn">Login</a>
+    <a th:href="@{/registration}" th:if="${!@accountService.isAuthenticated()}" class="waves-effect teal lighten-3 btn">Регистрация</a>
+
+    <form  th:if="${@accountService.isAuthenticated()}"  data-th-action="@{/logout}" method="post" data-th-if="${@accountService.isAuthenticated()}">
+        <br> <button type="submit" class="waves-effect blue accent-1 btn">Logout</button>
     </form>
+
 </div>
+
+
+<!--<div data-th-fragment="logoutFragment" data-th-remove="tag">-->
+    <!--<form data-th-action="@{/logout}" method="post" data-th-if="${@accountService.isAuthenticated()}">-->
+        <!--<button type="submit" class="waves-effect blue accent-1 btn">Logout</button>-->
+    <!--</form>-->
+<!--</div>-->
 
 <div data-th-fragment="scriptsFragment">
     <script type="text/javascript"
             th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js}"></script>
 </div>
+
 </body>
 </html>
 

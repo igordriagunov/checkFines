@@ -1,8 +1,7 @@
 package ru.itpark.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import antlr.StringUtils;
 import org.springframework.context.annotation.Primary;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,10 +20,12 @@ public class AccountServiceImpl implements AccountService {
 
     private final PasswordEncoder encoder;
     private final AccountRepository accountRepository;
+    private final MailSenderService mailSenderService;
 
-    public AccountServiceImpl(PasswordEncoder encoder, AccountRepository accountRepository) {
+    public AccountServiceImpl(PasswordEncoder encoder, AccountRepository accountRepository, MailSenderService mailSenderService) {
         this.encoder = encoder;
         this.accountRepository = accountRepository;
+        this.mailSenderService = mailSenderService;
     }
 
     @Override
@@ -72,6 +73,17 @@ public class AccountServiceImpl implements AccountService {
                 true
         );
         accountRepository.save(account);
+
+        if (org.springframework.util.StringUtils.isEmpty(account.getEMail())) {
+
+            String message = String.format(
+                    "Hello, %s , welcome to test site ",
+                    account.getUsername()
+
+            );
+
+            mailSenderService.send(account.getEMail(),"Localhost:8080",message);
+        }
 
     }
 }

@@ -10,6 +10,7 @@ import ru.itpark.domain.Account;
 import ru.itpark.domain.Fine;
 import ru.itpark.repository.AccountRepository;
 import ru.itpark.repository.FineRepositoryJpa;
+import ru.itpark.service.MailSenderService;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class AutoFinesWebApplication {
         PasswordEncoder encoder = context.getBean(PasswordEncoder.class);
         AccountRepository repository = context.getBean(AccountRepository.class);
         FineRepositoryJpa fineRepository = context.getBean(FineRepositoryJpa.class);
+        MailSenderService mailService = context.getBean(MailSenderService.class);
 
         repository.saveAll(
                 List.of(
@@ -82,5 +84,9 @@ public class AutoFinesWebApplication {
                 )
         );
 
+        mailService.send(
+                "talummoney@yandex.ru",
+                "hello",
+                "It's test msg");
     }
 }

@@ -7,7 +7,9 @@
     <a th:href="@{/registration}" th:if="${!@accountService.isAuthenticated()}" class="waves-effect teal lighten-3 btn">Регистрация</a>
 
     <form th:if="${@accountService.isAuthenticated()}"  data-th-action="@{/logout}" method="post" data-th-if="${@accountService.isAuthenticated()}">
-        <br> <button type="submit" class="waves-effect blue accent-1 btn">Logout</button>
+        <br> <button type="submit" class="waves-effect blue accent-1 btn">Выход</button>
+        <a th:href="@{/addMyCar}" th:if="${@accountService.isAuthenticated()}" class="waves-effect light-blue accent-2 btn">Добавить мой автомобиль</a>
+        <br>
     </form>
     <div class="row">
         <div class="col s10">
@@ -23,7 +25,7 @@
                     <i class="material-icons right">send</i>
                 </button>
                 <ol>
-                    <li th:each="fine : ${fines}">
+                    <li class="collection-item" th:each="fine : ${fines}">
                         <a th:href="@{/{carNum}(carNum=${fine.carNum})}"></a>
                         <a th:href="@{/{regNum}(regNum=${fine.regNum})}"></a>
                         <span th:text="${fine.dateOfFine}"></span>

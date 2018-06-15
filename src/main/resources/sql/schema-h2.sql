@@ -14,3 +14,11 @@ price INTEGER NOT NULL
 -- username VARCHAR(255) NOT NULL UNIQUE ,
 -- password VARCHAR(255) NOT NULL
 -- );
+CREATE TABLE IF NOT EXISTS cars (
+id INTEGER PRIMARY KEY AUTO_INCREMENT,
+carNumber VARCHAR(255) NOT NULL ,
+regNumber VARCHAR(255) NOT NULL ,
+--
+-- FOREIGN KEY (carNum) REFERENCES cars(carNumber)
+-- FOREIGN KEY (regNum) REFERENCES cars(regNumber)
+-- );

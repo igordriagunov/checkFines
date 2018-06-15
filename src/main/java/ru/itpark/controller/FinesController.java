@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.itpark.domain.Account;
-import ru.itpark.service.AccountService;
+import ru.itpark.domain.Car;
+import ru.itpark.repository.CarRepositoryJpa;
 import ru.itpark.service.AccountServiceImpl;
+import ru.itpark.service.CarServiceJpa;
 import ru.itpark.service.FineService;
 
 @Controller
@@ -16,19 +18,17 @@ public class FinesController {
 
     private final FineService fineService;
     private final AccountServiceImpl accountService;
+    private final CarServiceJpa carService;
 
-    public FinesController(FineService fineService, AccountServiceImpl accountService) {
+    public FinesController(FineService fineService, AccountServiceImpl accountService, CarServiceJpa carService) {
         this.fineService = fineService;
         this.accountService = accountService;
+        this.carService = carService;
     }
-
-
-
-
 
     @GetMapping("registration")
 //    @PreAuthorize("hasRole('ADMIN')")
-    public String getRegistration(Model model, @AuthenticationPrincipal Account account) {
+    public String getRegistration() {
         //model.addAttribute("account", account);
         //accountService.saveAccount(account);
         return "pages/registration";
@@ -43,7 +43,25 @@ public class FinesController {
         return "redirect:/login";
     }
 
+    @GetMapping("addMyCar")
+    public String getFormAddMyCar(Model model, @AuthenticationPrincipal Account account) {
+        model.addAttribute("account", account);
+        model.addAttribute("cars", carService.findAll());
+        return "pages/addMyCar";
+    }
 
+    @PostMapping("addMyCar")
+    public String addMyCar(@ModelAttribute Car car) {
+        accountService.addMyCar(car);
+
+        return "pages/addMyCar";
+    }
+
+    @GetMapping("/{carNumber}")
+    public String getCar(@PathVariable String carNumber, Model model) {
+        model.addAttribute("car", carService.findAllByCarNumber(carNumber));
+        return "pages/car";
+    }
 
 
     @GetMapping

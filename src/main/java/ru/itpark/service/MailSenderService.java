@@ -7,7 +7,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MailSenderService {
-   private JavaMailSender mailSender;
+   private final JavaMailSender mailSender;
+
+   public MailSenderService(JavaMailSender mailSender) {
+      this.mailSender = mailSender;
+   }
 
    @Value("${spring.mail.username}")
    private String username;

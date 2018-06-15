@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-import javax.validation.Valid;
 import java.util.Properties;
 
 @Configuration
@@ -26,8 +25,8 @@ public class MailConfig {
     @Value("${spring.mail.protocol}")
     private String protocol;
 
-//    @Value("${spring.mail.debug}")
-//    private String debug;
+    @Value("${spring.mail.debug}")
+    private String debug;
 
     @Bean
     public JavaMailSender getMailSender() {
@@ -41,7 +40,7 @@ public class MailConfig {
         Properties properties = mailSender.getJavaMailProperties();
 
         properties.setProperty("mail.transport.protocol", protocol);
-//        properties.setProperty("mail.debug", debug);
+        properties.setProperty("mail.debug", debug);
 
         return mailSender;
     }

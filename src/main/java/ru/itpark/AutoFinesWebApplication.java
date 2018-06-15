@@ -7,8 +7,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.itpark.domain.Account;
+import ru.itpark.domain.Car;
 import ru.itpark.domain.Fine;
 import ru.itpark.repository.AccountRepository;
+import ru.itpark.repository.CarRepositoryJpa;
 import ru.itpark.repository.FineRepositoryJpa;
 import ru.itpark.service.MailSenderService;
 
@@ -25,6 +27,7 @@ public class AutoFinesWebApplication {
         AccountRepository repository = context.getBean(AccountRepository.class);
         FineRepositoryJpa fineRepository = context.getBean(FineRepositoryJpa.class);
         MailSenderService mailService = context.getBean(MailSenderService.class);
+        CarRepositoryJpa carRepository = context.getBean(CarRepositoryJpa.class);
 
         repository.saveAll(
                 List.of(
@@ -80,13 +83,32 @@ public class AutoFinesWebApplication {
                                 "09.05.18",
                                 "КоАП статья и тд",
                                 2500
+                        ),
+                        new Fine(
+                                0,
+                                "т116тт116",
+                                "1818333555",
+                                "09.05.18",
+                                "КоАП статья и тд",
+                                2000
                         )
                 )
         );
 
-        mailService.send(
-                "talummoney@yandex.ru",
-                "hello",
-                "It's test msg");
+//        carRepository.saveAll(
+//                List.of(
+//                        new Car(0,
+//                                "т116тт116",
+//                                "1818333555"
+//                        )
+//                )
+//        );
+
+//        mailService.send(
+//                "talummoney@yandex.ru",
+//                "hello",
+//                "It's test msg");
+//
+//
     }
 }

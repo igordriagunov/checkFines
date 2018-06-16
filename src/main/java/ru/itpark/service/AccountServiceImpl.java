@@ -11,7 +11,7 @@ import ru.itpark.domain.Account;
 import ru.itpark.domain.Car;
 import ru.itpark.exception.UsernameAlreadyExistsException;
 import ru.itpark.repository.AccountRepository;
-import ru.itpark.repository.CarRepositoryJpa;
+import ru.itpark.repository.CarRepository;
 
 import java.util.List;
 
@@ -22,10 +22,10 @@ public class AccountServiceImpl implements AccountService {
     private final PasswordEncoder encoder;
     private final AccountRepository accountRepository;
     private final MailSenderService mailSenderService;
-    private final CarRepositoryJpa carRepository;
+    private final CarRepository carRepository;
 
     public AccountServiceImpl(PasswordEncoder encoder, AccountRepository accountRepository,
-                              MailSenderService mailSenderService, CarRepositoryJpa carRepository) {
+                              MailSenderService mailSenderService, CarRepository carRepository) {
         this.encoder = encoder;
         this.accountRepository = accountRepository;
         this.mailSenderService = mailSenderService;

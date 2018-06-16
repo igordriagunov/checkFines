@@ -11,7 +11,7 @@
                     <div class="input-field col s12">
                         <label th:for="carNum-field">номер автомобился<br>
                         </label><br>
-                        <input id="carNum-field" placeholder="о777оо77" name="carNum" type="text"
+                        <input id="carNum-field" placeholder="о777оо77" name="carNumber" type="text"
                                required>
                         <br>
                     </div>
@@ -20,7 +20,7 @@
                     <div class="input-field col s12">
                         <label th:for="regNum-field">номер свидетельства о регистрации<br>
                         </label><br>
-                        <input id="regNum-field" placeholder="1616111222" name="regNum" type="text"
+                        <input id="regNum-field" placeholder="1616111222" name="regNumber" type="text"
                                required>
                         <br>
                     </div>
@@ -31,14 +31,13 @@
                 <br>
                 <ol class="collection">
                     <li class="collection-item" th:each="car : ${cars}">
-                        <a
-                                data-th-href="@{addMyCar/{carNumber} (carNumber=${car.carNumber}) }">
+                        <a th:href="@{/addMyCar/{id} (id=${car.id}) }">
+
                             <span th:text="${car.carNumber}"></span>
                             <span th:text="${car.regNumber}"></span>
                         </a>
                     </li>
                 </ol>
-
             </form>
         </div>
     </div>

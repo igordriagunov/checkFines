@@ -7,11 +7,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.itpark.domain.Account;
-import ru.itpark.domain.Car;
 import ru.itpark.domain.Fine;
 import ru.itpark.repository.AccountRepository;
-import ru.itpark.repository.CarRepositoryJpa;
-import ru.itpark.repository.FineRepositoryJpa;
+import ru.itpark.repository.CarRepository;
+import ru.itpark.repository.FineRepository;
 import ru.itpark.service.MailSenderService;
 
 import java.util.List;
@@ -25,9 +24,9 @@ public class AutoFinesWebApplication {
                 SpringApplication.run(AutoFinesWebApplication.class, args);
         PasswordEncoder encoder = context.getBean(PasswordEncoder.class);
         AccountRepository repository = context.getBean(AccountRepository.class);
-        FineRepositoryJpa fineRepository = context.getBean(FineRepositoryJpa.class);
+        FineRepository fineRepository = context.getBean(FineRepository.class);
         MailSenderService mailService = context.getBean(MailSenderService.class);
-        CarRepositoryJpa carRepository = context.getBean(CarRepositoryJpa.class);
+        CarRepository carRepository = context.getBean(CarRepository.class);
 
         repository.saveAll(
                 List.of(

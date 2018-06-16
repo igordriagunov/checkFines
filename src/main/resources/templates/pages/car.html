@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head data-th-replace="fragments/layout :: headFragment(title=${car})"></head>
+<head data-th-replace="fragments/layout :: headFragment(title=${car.get().id})"></head>
 
 <body>
 <div class="container">
@@ -13,10 +13,10 @@
         <div class="col s12">
             <div class="card">
                 <div class="card-content">
-                    <span class="card-title" th:text="${car.id}"></span>
+                    <span class="card-title" th:text="${car.get().id}"></span>
                 </div>
                 <div class="card-action">
-                    <form data-th-action="@{/addMyCar/{carNumber}/remove(carNumber=${car.id})}" method="post">
+                    <form data-th-action="@{/addMyCar/{id}/remove(id=${car.get().id})}" method="post">
                         <button class="waves-effect waves-light btn" type="submit">Удалить</button>
                     </form>
                 </div>

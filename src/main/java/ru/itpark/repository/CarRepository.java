@@ -14,4 +14,6 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
     List<Car> findAllById(Iterable<Integer> id);
 
     List<Car> findAllByAccount_Id(int accountId);
+
+    void removeById(int id);
 }

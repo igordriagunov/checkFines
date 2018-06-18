@@ -19,6 +19,6 @@ id INTEGER PRIMARY KEY AUTO_INCREMENT,
 carNumber VARCHAR(255) NOT NULL ,
 regNumber VARCHAR(255) NOT NULL ,
 --
--- FOREIGN KEY (carNum) REFERENCES cars(carNumber)
--- FOREIGN KEY (regNum) REFERENCES cars(regNumber)
+FOREIGN KEY (carNum) REFERENCES cars(carNumber)
+FOREIGN KEY (regNum) REFERENCES cars(regNumber)
 -- );

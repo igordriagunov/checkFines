@@ -3,12 +3,17 @@
 <head th:replace="fragments/layout :: headFragment(title='Поиск штрафов')"></head>
 <body>
 <div class="container">
-    <a th:href="@{/login}" th:if="${!@accountService.isAuthenticated()}" class="waves-effect green lighten-3 btn">Login</a>
-    <a th:href="@{/registration}" th:if="${!@accountService.isAuthenticated()}" class="waves-effect teal lighten-3 btn">Регистрация</a>
-
-    <form th:if="${@accountService.isAuthenticated()}"  data-th-action="@{/logout}" method="post" data-th-if="${@accountService.isAuthenticated()}">
-        <br> <button type="submit" class="waves-effect blue accent-1 btn">Выход</button>
-        <a th:href="@{/addMyCar}" th:if="${@accountService.isAuthenticated()}" class="waves-effect light-blue accent-2 btn">Добавить мой автомобиль</a>
+    <br>
+    <a th:href="@{/login}" th:if="${!@accountService.isAuthenticated()}"
+       class="waves-effect green lighten-3 btn">Войти</a>
+    <a th:href="@{/registration}" th:if="${!@accountService.isAuthenticated()}"
+       class="waves-effect teal lighten-3 btn">Регистрация</a>
+    <form th:if="${@accountService.isAuthenticated()}" data-th-action="@{/logout}" method="post">
+          <!--data-th-if="${@accountService.isAuthenticated()}">-->
+        <br>
+        <button type="submit" class="waves-effect blue accent-1 btn">Выход</button>
+        <a th:href="@{/my-car}" th:if="${@accountService.isAuthenticated()}"
+           class="waves-effect light-blue accent-2 btn">Добавить мой автомобиль</a>
         <br>
     </form>
     <div class="row">
@@ -19,7 +24,7 @@
                 <label for="carNum-field">Введите номер автомобиля<br></label><br>
                 <input id="carNum-field" placeholder="о777оо77" name="carNum" type="search" th:value="${carNum}">
                 <br>
-                <label for="regNum-field">Введите регистрационный номер<br></label><br>
+                <label for="regNum-field">Введите номер свидетельства о регистрации<br></label><br>
                 <input id="regNum-field" placeholder="1616111222" name="regNum" type="search" th:value="${regNum}">
                 <button class="waves-effect blue accent-2 btn">Проверить
                     <i class="material-icons right">send</i>

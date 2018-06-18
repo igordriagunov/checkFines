@@ -1,23 +1,28 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head data-th-replace="fragments/layout :: headFragment(title=${car.get().id})"></head>
+<head data-th-replace="fragments/layout :: headFragment(title=${car.get().carNumber})"></head>
 
 <body>
 <div class="container">
     <div class="row">
         <div class="col s12 section">
-            <div class="right-align" data-th-include="fragments/layout :: logoutFragment"></div>
+            <br>
+            <form th:if="${@accountService.isAuthenticated()}" data-th-action="@{/logout}" method="post">
+                <button type="submit" class="waves-effect blue accent-1 btn">Выход</button>
+                <a th:href="@{/}" class="waves-effect green lighten-3 btn">Главная</a>
+            </form>
         </div>
     </div>
     <div class="row">
         <div class="col s12">
             <div class="card">
                 <div class="card-content">
-                    <span class="card-title" th:text="${car.get().id}"></span>
+                    <span class="card-title" th:text="${car.get().carNumber}"></span>
+                    <span class="card-title" th:text="${car.get().regNumber}"></span>
                 </div>
                 <div class="card-action">
-                    <form data-th-action="@{/addMyCar/{id}/remove(id=${car.get().id})}" method="post">
-                        <button class="waves-effect waves-light btn" type="submit">Удалить</button>
+                    <form data-th-action="@{/{id}/remove(id=${car.get().getId()})}" method="post">
+                        <button class="waves-effect blue accent-2 btn" type="submit">Удалить</button>
                     </form>
                 </div>
             </div>

@@ -17,11 +17,11 @@
 
 <div data-th-fragment="logoutFragment" data-th-remove="tag">
 
-    <a th:href="@{/login}" th:if="${!@accountService.isAuthenticated()}" class="waves-effect green lighten-3 btn">Login</a>
+    <a th:href="@{/login}" th:if="${!@accountService.isAuthenticated()}" class="waves-effect green lighten-3 btn">Войти</a>
     <a th:href="@{/registration}" th:if="${!@accountService.isAuthenticated()}" class="waves-effect teal lighten-3 btn">Регистрация</a>
 
-    <form  th:if="${@accountService.isAuthenticated()}"  data-th-action="@{/logout}" method="post" data-th-if="${@accountService.isAuthenticated()}">
-        <br> <button type="submit" class="waves-effect blue accent-1 btn">Logout</button>
+    <form  th:if="${@accountService.isAuthenticated()}"  data-th-action="@{/logout}" >
+        <br> <button type="submit" class="waves-effect blue accent-1 btn">Выход</button>
     </form>
 
 </div>

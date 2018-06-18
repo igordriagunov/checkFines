@@ -29,6 +29,7 @@ public class FinesController {
 //    @PreAuthorize("hasRole('ADMIN')")
     public String indexPage(Model model, @AuthenticationPrincipal Account account) {
         model.addAttribute("account", account);
+
         return "pages/index";
     }
 
@@ -37,12 +38,14 @@ public class FinesController {
         model.addAttribute("fines", fineService.findFineByCarNumberRegNumber(carNum, regNum));
         model.addAttribute("carNum", carNum);
         model.addAttribute("regNum", regNum);
+
         return "pages/index";
     }
 
     @GetMapping("registration")
 //    @PreAuthorize("hasRole('ADMIN')")
     public String getRegistration() {
+
         return "pages/registration";
     }
 
@@ -55,25 +58,35 @@ public class FinesController {
         return "redirect:/login";
     }
 
-    @GetMapping("addMyCar")
+    @GetMapping("my-car")
     public String getFormAddMyCar(Model model, @AuthenticationPrincipal Account account) {
         model.addAttribute("account", account);
         model.addAttribute("cars", carService.findAllByAccountId(account.getId()));
-        return "pages/addMyCar";
+
+        return "pages/my-car";
     }
 
-    @PostMapping("addMyCar")
+    @PostMapping("my-car")
     public String addMyCar(@ModelAttribute Car car, @AuthenticationPrincipal Account account) {
         car.setAccount(account);
         carService.save(car);
-        return "redirect:/addMyCar";
+
+        return "redirect:/my-car";
     }
 
     //FIXME: carNumber вместо id ?
-    @GetMapping("addMyCar/{id}")
+    @GetMapping("my-car/{id}")
     public String getCar(@PathVariable int id, Model model) {
         model.addAttribute("car", carService.findById(id));
+
         return "pages/car";
+    }
+
+    @PostMapping("/{id}/remove")
+    public String remove(@PathVariable int id) {
+        carService.deleteById(id);
+
+        return "redirect:/my-car";
     }
 
 

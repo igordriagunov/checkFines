@@ -5,39 +5,42 @@
 <div class="container">
     <div class="row">
         <div class="col s10">
+            <br>
+            <a th:href="@{/}" class="waves-effect green lighten-3 btn">Главная</a>
+
             <h3>Добавить мой автомобиль</h3>
-            <form th:if="${@accountService.isAuthenticated()}" th:action="@{/addMyCar}" method="post">
+            <form th:if="${@accountService.isAuthenticated()}" th:action="@{/my-car}" method="post">
                 <div class="row">
                     <div class="input-field col s12">
-                        <label th:for="carNum-field">номер автомобился<br>
+                        <label th:for="carNumber-field">номер автомобился<br>
                         </label><br>
-                        <input id="carNum-field" placeholder="о777оо77" name="carNumber" type="text"
+                        <input id="carNumber-field" placeholder="о777оо77" name="carNumber" type="text"
                                required>
                         <br>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <label th:for="regNum-field">номер свидетельства о регистрации<br>
+                        <label th:for="regNumber-field">номер свидетельства о регистрации<br>
                         </label><br>
-                        <input id="regNum-field" placeholder="1616111222" name="regNumber" type="text"
+                        <input id="regNumber-field" placeholder="1616111222" name="regNumber" type="text"
                                required>
                         <br>
                     </div>
                 </div>
-                <button class="waves-effect green accent-2 btn">Добавить
+                <button class="waves-effect blue darken-1 btn">Добавить
                     <i class="material-icons right">send</i>
                 </button>
                 <br>
-                <ol class="collection">
+                <ul class="collection">
                     <li class="collection-item" th:each="car : ${cars}">
-                        <a th:href="@{/addMyCar/{id} (id=${car.id}) }">
+                        <a th:href="@{/my-car/{id} (id=${car.id}) }">
 
-                            <span th:text="${car.carNumber}"></span>
-                            <span th:text="${car.regNumber}"></span>
+                            <span th:text="${car.carNumber}"></span><br>
+                            <!--<span th:text="${car.regNumber}"></span>-->
                         </a>
                     </li>
-                </ol>
+                </ul>
             </form>
         </div>
     </div>

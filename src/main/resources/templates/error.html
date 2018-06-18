@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head data-th-replace="fragments/layout :: headFragment(title='Error')"></head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <br>
+            <form th:if="${@accountService.isAuthenticated()}" data-th-action="@{/logout}" method="post">
+                <button type="submit" class="waves-effect blue accent-1 btn">Выход</button>
+                <a th:href="@{/}" class="waves-effect green lighten-3 btn">Главная</a>
+            </form>
+            <h3>Такой страницы не существует :( </h3>
+            <img class="responsive-img"
+                 data-th-src="@{/tumbleweed.jpg}" />
+        </div>
+    </div>
+</div>
+<div data-th-include="fragments/layout :: scriptsFragment" data-th-remove="tag"></div>
+</body>
+</html>

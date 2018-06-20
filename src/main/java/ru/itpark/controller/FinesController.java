@@ -74,7 +74,6 @@ public class FinesController {
         return "redirect:/my-car";
     }
 
-    //FIXME: carNumber вместо id ?
     @GetMapping("my-car/{id}")
     public String getCar(@PathVariable int id, Model model) {
         model.addAttribute("car", carService.findById(id));
